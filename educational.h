@@ -18,9 +18,6 @@ typedef quint32 Grade;
 class Educational : public Film
 {
 public:
-    // Default Constructor
-    Educational() = 0;
-
     // Constructor with private and inherited values set
     Educational(QString id, QString title, QString dir, quint32 len,
                 QDate relDate, QString subject, Grade grade,

@@ -28,7 +28,7 @@ public:
     QString toString();
 
     // Find a film
-    Film* findFilm(QString id);
+    std::shared_ptr<Film> findFilm(QString id);
 
     // Get ID
     QStringList getID(QString title);

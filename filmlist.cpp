@@ -19,7 +19,7 @@ FilmList::FilmList(const FilmList& copy) {
 
 FilmList& FilmList::operator=(FilmList copy) {
     // TODO
-    return *this;)
+    return *this;
 }
 
 FilmList::~FilmList() {
@@ -27,14 +27,14 @@ FilmList::~FilmList() {
     // TODO
 }
 
-QString FilmList::findFilm(QString id) {
+QString FilmList::toString() {
     // TODO
     return QString();
 }
 
-Film* FilmList::findFilm(QString id) {
+std::shared_ptr<Film> FilmList::findFilm(QString id) {
     // TODO
-    return *Film();
+    return std::shared_ptr<Film>();
 }
 
 QStringList FilmList::getID(QString title) {

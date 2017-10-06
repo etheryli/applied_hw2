@@ -22,9 +22,6 @@ enum MPAARating {G, PG, PG13, R};
 class Entertainment : public Film
 {
 public:
-    // Default Constructor
-    Entertainment() = 0;
-
     // Constructor with inherited and private members set
     Entertainment(QString id, QString title, QString dir,
                   quint32 length, QDate relDate, FilmType type,

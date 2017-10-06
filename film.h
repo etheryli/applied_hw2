@@ -24,7 +24,7 @@ public:
          quint32 length, QDate relDate);
 
     // Virtual toString
-    virtual toString(bool labeled, QString sepchar) = 0;
+    virtual QString toString(bool labeled, QString sepchar) = 0;
 
 private:
     // Private members for a Film

@@ -15,9 +15,6 @@
 class ByPublishers : public Educational
 {
 public:
-    // Default Constructor
-    ByPublishers();
-
     // Constructor with inherited and private members set
     ByPublishers(QString id, QString title, QString dir, quint32 length,
                  QDate relDate, QString subject, Grade grade,

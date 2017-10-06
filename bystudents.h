@@ -18,9 +18,6 @@ enum GradeLevel {FRESHMAN, SOPHOMORE, JUNIOR, SENIOR, GRADUATE};
 class ByStudents : public Educational
 {
 public:
-    // Default Constructor
-    ByStudents() = 0;
-
     // Constructor with inherited and private members set
     ByStudents(QString id, QString title, QString dir, quint32 len,
                QDate relDate, QString subject, Grade grade,
