@@ -1,10 +1,10 @@
 /*
  * Created by Hung Nguyen
- * Student ID: 905925175
+ * Student ID: 905******
  * Email: dnhung7@vt.edu
  * Class: ECE 3574
  * Assignment: Homework 2
- * File: Abstract header file for Film class
+ * File: Abstract implementation file for Film class
  */
 
 #include "film.h"

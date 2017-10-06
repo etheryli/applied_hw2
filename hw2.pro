@@ -7,5 +7,17 @@ TARGET = hw2
 INCLUDEPATH += .
 
 # Input
-HEADERS += QUtfStream.h
-SOURCES += hw2.cpp QUtfStream.cpp
+HEADERS += QUtfStream.h \
+    filmlist.h \
+    film.h \
+    educational.h \
+    entertainment.h \
+    bystudents.h \
+    bypublishers.h
+SOURCES += hw2.cpp QUtfStream.cpp \
+    filmlist.cpp \
+    film.cpp \
+    educational.cpp \
+    entertainment.cpp \
+    bystudents.cpp \
+    bypublishers.cpp

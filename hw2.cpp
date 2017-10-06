@@ -1,9 +1,9 @@
-// Sean Moore
-// Test code for Homework 2
+// Hung Nguyen
+//
 
 # include <QUtfStream.h>
 // Include the header containing FilmList here.
-//# include "Film.h"
+# include "Film.h"
 
 # include <QString>
 # include <QList>
