@@ -12,25 +12,24 @@
 
 #include "educational.h"
 
-// Types of Grade Level of Student
-enum GradeLevel {FRESHMAN, SOPHOMORE, JUNIOR, SENIOR, GRADUATE};
+class ByStudents : public Educational {
+ public:
+  // Constructor with inherited and private members set
+  ByStudents(QString id, QString title, QString dir, quint32 len, QDate relDate,
+             QString subject, Grade grade, QString authors, QString department);
 
-class ByStudents : public Educational
-{
-public:
-    // Constructor with inherited and private members set
-    ByStudents(QString id, QString title, QString dir, quint32 len,
-               QDate relDate, QString subject, Grade grade,
-               QString authors, QString department);
+  // Constructor with QStringList
+  ByStudents(QStringList& propList);
 
-    // Constructor with QStringList
-    ByStudents(QStringList propList);
+  // Return to string format
+  QString toString(bool labeled, QString sepchar);
 
-    // Return to string format
-    QString toString(bool labeled, QString sepchar);
+  bool operator==(Film& film);
 
-private:
-    QString m_Department;
+  QString getDepartment();
+
+ private:
+  QString m_Department;
 };
 
-#endif // BYSTUDENTS_H
+#endif  // BYSTUDENTS_H

@@ -9,43 +9,74 @@
 
 #include "filmlist.h"
 
-FilmList::FilmList() {
-    // TODO
-}
-
-FilmList::FilmList(const FilmList& copy) {
-    // TODO
-}
-
-FilmList& FilmList::operator=(FilmList copy) {
-    // TODO
-    return *this;
-}
+FilmList::FilmList() : idIndex(0) {}
 
 FilmList::~FilmList() {
-    //qDeleteAll(*this)
-    // TODO
+  // Delete all pointers using lib function
+  qDeleteAll(*this);
+  clear();
 }
 
 QString FilmList::toString() {
-    // TODO
-    return QString();
+  QString temp;
+  // Iterate over the whole class and derived classes' toString's
+  for (int i = 0; i < size(); i++) {
+    temp += at(i)->toString(true, "\n");
+  }
+  return temp;
 }
 
-std::shared_ptr<Film> FilmList::findFilm(QString id) {
-    // TODO
-    return std::shared_ptr<Film>();
+Film *FilmList::findFilm(QString id) {
+  // Return first matching ID or return null
+  for (int i = 0; i < size(); i++) {
+    if (at(i)->getID() == id) {
+      return at(i);
+    }
+  }
+  return 0;
 }
 
 QStringList FilmList::getID(QString title) {
-    // TODO
-    return QStringList();
+  QStringList temp;
+
+  // Find matching titles and add them return QStringList
+  for (int i = 0; i < size(); ++i) {
+    if (at(i)->getTitle().trimmed() == title.trimmed()) {
+      temp << at(i)->getID();
+    }
+  }
+  return temp;
 }
 
-void FilmList::addFilm(Film* film) {
-    // TODO
+void FilmList::addFilm(Film *film) {
+  // Find duplicate
+  for (int i = 0; i < size(); i++) {
+    if (*at(i) == *film) {
+      throw QString("Failed to double-add a film.");
+    }
+  }
+  // Set ID with private unique id
+  film->setID(QString::number(idIndex, 10));
+
+  // Increments another unique id for the next add
+  idIndex++;
+
+  // Append to this list
+  append(film);
 }
 
 void FilmList::removeFilm(QString filmID) {
-    // TODO
+  // If the film exists then delete all film instances, else error
+  Film *film(findFilm(filmID));
+
+  if (film) {
+    removeAll(film);
+    delete film;
+    return;
+  }
+
+  throw QString("%1%2%3")
+      .arg("Film with ")
+      .arg(filmID)
+      .arg(" Film ID not found for removal.");
 }

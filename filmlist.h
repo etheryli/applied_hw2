@@ -12,36 +12,38 @@
 
 #include <QList>
 #include <QStringList>
-#include "film.h"
 #include <memory>
+#include "bypublishers.h"
+#include "bystudents.h"
+#include "educational.h"
+#include "entertainment.h"
+#include "film.h"
 
-class FilmList : public QList<std::shared_ptr<Film>>
-{
-public:
-    // Default Constructor
-    FilmList();
+class FilmList : public QList<Film *> {
+ public:
+  // Default Constructor
+  FilmList();
 
-    // Destructor
-    ~FilmList();
+  // Destructor
+  ~FilmList();
 
-    // Return a String
-    QString toString();
+  // Return a String
+  QString toString();
 
-    // Find a film
-    std::shared_ptr<Film> findFilm(QString id);
+  // Find a film
+  Film *findFilm(QString id);
 
-    // Get ID
-    QStringList getID(QString title);
+  // Get ID
+  QStringList getID(QString title);
 
-    // Add Film
-    void addFilm(Film* film);
+  // Add Film
+  void addFilm(Film *film);
 
-    // Remove Film
-    void removeFilm(QString filmID);
-private:
-    // Restrict copying of FilmList ???? TODO
-    FilmList(const FilmList& copy);
-    FilmList& operator=(FilmList copy);
+  // Remove Film
+  void removeFilm(QString filmID);
+
+ private:
+  int idIndex;
 };
 
-#endif // FILMLIST_H
+#endif  // FILMLIST_H

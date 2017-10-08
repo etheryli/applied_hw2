@@ -13,27 +13,37 @@
 #include <QStringList>
 #include "film.h"
 
-typedef quint32 Grade;
+enum Grade { FRESHMAN = 0, SOPHOMORE, JUNIOR, SENIOR, GRADUATE };
+static const QStringList listGrades = QStringList() << "Freshman"
+                                                    << "Sophomore"
+                                                    << "Junior"
+                                                    << "Senior"
+                                                    << "Graduate";
 
-class Educational : public Film
-{
-public:
-    // Constructor with private and inherited values set
-    Educational(QString id, QString title, QString dir, quint32 len,
-                QDate relDate, QString subject, Grade grade,
-                QString authors);
+class Educational : public Film {
+ public:
+  // Constructor with private and inherited values set
+  Educational(QString id, QString title, QString dir, quint32 len,
+              QDate relDate, QString subject, Grade grade, QString authors);
 
-    // Constructor with a QStringList
-    Educational(QStringList propList);
+  // Constructor with a QStringList
+  Educational(QStringList& propList);
 
-    // Virtual toString
-    virtual QString toString(bool labeled, QString sepchar);
+  // Virtual toString
+  virtual QString toString(bool labeled, QString sepchar);
 
-private:
-    QString m_Subject;
-    Grade m_GradeLevel;
-    QString m_authors;
+  // Operator overload
+  virtual bool operator==(Film& film);
 
+  // Acccessors
+  QString getSubject();
+  Grade getGradeLevel();
+  QString getAuthors();
+
+ private:
+  QString m_Subject;
+  Grade m_GradeLevel;
+  QString m_Authors;
 };
 
-#endif // EDUCATIONAL_H
+#endif  // EDUCATIONAL_H

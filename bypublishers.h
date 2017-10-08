@@ -12,22 +12,27 @@
 
 #include "educational.h"
 
-class ByPublishers : public Educational
-{
-public:
-    // Constructor with inherited and private members set
-    ByPublishers(QString id, QString title, QString dir, quint32 length,
-                 QDate relDate, QString subject, Grade grade,
-                 QString authors, QString publisher);
+class ByPublishers : public Educational {
+ public:
+  // Constructor with inherited and private members set
+  ByPublishers(QString id, QString title, QString dir, quint32 length,
+               QDate relDate, QString subject, Grade grade, QString authors,
+               QString publisher);
 
-    // Constructor with QStringList
-    ByPublishers(QStringList propList);
+  // Constructor with QStringList
+  ByPublishers(QStringList& propList);
 
-    // Return string format
-    QString toString(bool labeled, QString sepchar);
+  // Return string format
+  QString toString(bool labeled, QString sepchar);
 
-private:
-    QString m_Publisher;
+  // Equality comparision given Film pointer
+  bool operator==(Film& film);
+
+  // Accessor
+  QString getPublisher();
+
+ private:
+  QString m_Publisher;
 };
 
-#endif // BYPUBLISHERS_H
+#endif  // BYPUBLISHERS_H

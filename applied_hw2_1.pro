@@ -3,9 +3,9 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = hw2
+TARGET = applied_hw2_1
 INCLUDEPATH += .
-
+CONFIG += c++11
 # Input
 HEADERS += QUtfStream.h \
     filmlist.h \
@@ -13,11 +13,13 @@ HEADERS += QUtfStream.h \
     educational.h \
     entertainment.h \
     bystudents.h \
-    bypublishers.h
-SOURCES += hw2.cpp QUtfStream.cpp \
+    bypublishers.h \
+
+SOURCES += QUtfStream.cpp \
     filmlist.cpp \
     film.cpp \
     educational.cpp \
     entertainment.cpp \
     bystudents.cpp \
-    bypublishers.cpp
+    bypublishers.cpp \
+    applied_hw2_1.cpp

@@ -13,29 +13,43 @@
 #include <QStringList>
 #include "film.h"
 
-// Types of Film for Entertainment
-enum FilmType {ACTION, COMEDY, SCIFI, THRILLER, HORROR};
+// Types of Film for Entertainment and Ratings of Film for Enter
+enum FilmType { ACTION = 0, COMEDY, SCIFI, THRILLER, HORROR };
+enum MPAARating { G = 0, PG, PG13, R };
 
-// Ratings of Film for Enter
-enum MPAARating {G, PG, PG13, R};
+// Static string lists for fast conversion to print
+static const QStringList listFilmType = QStringList() << "Action"
+                                                      << "Comedy"
+                                                      << "Sci-Fi"
+                                                      << "Thriller"
+                                                      << "Horror";
+static const QStringList listMPAARating = QStringList() << "G"
+                                                        << "PG"
+                                                        << "PG-13"
+                                                        << "R";
 
-class Entertainment : public Film
-{
-public:
-    // Constructor with inherited and private members set
-    Entertainment(QString id, QString title, QString dir,
-                  quint32 length, QDate relDate, FilmType type,
-                  MPAARating rating);
+class Entertainment : public Film {
+ public:
+  // Constructor with inherited and private members set
+  Entertainment(QString id, QString title, QString dir, quint32 length,
+                QDate relDate, FilmType type, MPAARating rating);
 
-    // Constructor with a QStringList
-    Entertainment(QStringList propList);
+  // Constructor with a QStringList
+  Entertainment(QStringList& propList);
 
-    // Return members as string
-    QString toString(bool labeled, QString sepchar);
+  // Return members as string
+  QString toString(bool labeled, QString sepchar);
 
-private:
-    FilmType m_Type;
-    MPAARating m_Rating;
+  // Equality comparision given Film pointer
+  bool operator==(Film& film);
+
+  // Accessors
+  FilmType getFilmType() const;
+  MPAARating getRating() const;
+
+ private:
+  FilmType m_Type;
+  MPAARating m_Rating;
 };
 
-#endif // ENTERTAINMENT_H
+#endif  // ENTERTAINMENT_H
